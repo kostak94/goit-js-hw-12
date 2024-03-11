@@ -87,7 +87,7 @@
 
 .gallery {
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 80px;
   max-width: 1220px;
   display: flex;
   flex-wrap: wrap;
@@ -127,4 +127,23 @@
 .photo {
   height: 200px;
   width: 360px;
+}
+
+.load-btn {
+  font-family: Montserrat;
+  color: #ffffff;
+  background-color: #4e75ff;
+  outline: none;
+  border-radius: 8px;
+  border: none;
+  padding: 8px 16px;
+}
+.load-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.load-btn:hover {
+  background-color: #6c8cff;
 }
