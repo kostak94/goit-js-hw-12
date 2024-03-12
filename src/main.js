@@ -63,19 +63,22 @@ async function onBtnClickHandler() {
   page += 1;
   showLoader();
 
-  const data = await getPhotos(searchInputValue, page);
-  const lastPage = Math.ceil(data.totalHits / perPage);
-  const markup = photosTemplate(data.hits);
-  gallery.insertAdjacentHTML('beforeend', markup);
-  refreshLightbox();
+  try {
+    const data = await getPhotos(searchInputValue, page);
+    const lastPage = Math.ceil(data.totalHits / perPage);
+    const markup = photosTemplate(data.hits);
+    gallery.insertAdjacentHTML('beforeend', markup);
+    refreshLightbox();
 
-  refreshLightbox();
-  if (lastPage === page) {
-    hideLoadBtn();
-    infoMessage("We're sorry, but you've reached the end of search results");
+    if (lastPage === page) {
+      hideLoadBtn();
+      infoMessage("We're sorry, but you've reached the end of search results");
+    }
+  } catch {
+    showError('Something went wrong!!!');
+  } finally {
+    hideLoader();
   }
-
-  hideLoader();
   getScrollByLoadBtnClick();
 }
 
